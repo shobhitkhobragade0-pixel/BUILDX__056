@@ -1,0 +1,15 @@
+{
+  "name": "lifelink-nagpur",
+  "version": "1.0.0",
+  "description": "LIFELINK NAGPUR - Emergency Healthcare Coordination Network",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "start:backend": "npm --prefix backend start",
+    "preview:frontend": "npm --prefix frontend run preview"
+  },
+  "keywords": ["emergency", "healthcare", "ambulance", "nagpur", "triage", "ai"],
+  "author": "LIFELINK Team",
+  "license": "MIT"
+}
