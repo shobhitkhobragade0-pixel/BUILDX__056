@@ -1,0 +1,55 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-teal-800 mb-6">Admin Dashboard</h1>
+
+    <!-- Analytics cards -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+        <div class="card p-4">
+            <p class="text-sm text-slate-600">Daily patients</p>
+            <p id="stat-daily" class="text-2xl font-bold text-teal-700">-</p>
+        </div>
+        <div class="card p-4">
+            <p class="text-sm text-slate-600">Emergency cases</p>
+            <p id="stat-emergency" class="text-2xl font-bold text-red-600">-</p>
+        </div>
+        <div class="card p-4">
+            <p class="text-sm text-slate-600">Avg wait (min)</p>
+            <p id="stat-wait" class="text-2xl font-bold text-teal-700">-</p>
+        </div>
+        <div class="card p-4">
+            <p class="text-sm text-slate-600">Busiest dept</p>
+            <p id="stat-dept" class="text-lg font-bold text-teal-700">-</p>
+        </div>
+        <div class="card p-4">
+            <p class="text-sm text-slate-600">Doctor workload</p>
+            <p id="stat-workload" class="text-sm text-teal-700">-</p>
+        </div>
+    </div>
+
+    <div id="tab-emergencies" class="admin-panel card p-6">
+        <h2 class="text-lg font-semibold text-teal-800 mb-4">Emergency Alerts (HIGH PRIORITY)</h2>
+        <div id="emergencies-list" class="space-y-3"></div>
+    </div>
+    <div id="tab-doctors" class="admin-panel card p-6 hidden">
+        <h2 class="text-lg font-semibold text-teal-800 mb-4">Manage Doctors</h2>
+        <div id="doctors-list" class="space-y-2 mb-6"></div>
+    </div>
+    <div id="tab-appointments" class="admin-panel card p-6 hidden">
+        <h2 class="text-lg font-semibold text-teal-800 mb-4">All Appointments</h2>
+        <div id="admin-appointments-list" class="space-y-2"></div>
+    </div>
+    <div id="tab-patients" class="admin-panel card p-6 hidden">
+        <h2 class="text-lg font-semibold text-teal-800 mb-4">Patients</h2>
+        <div id="admin-patients-list" class="space-y-2"></div>
+    </div>
+    <div id="tab-donors" class="admin-panel card p-6 hidden">
+        <h2 class="text-lg font-semibold text-teal-800 mb-4">Blood Donors</h2>
+        <div id="admin-donors-list" class="space-y-2"></div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
+{% endblock %}

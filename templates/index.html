@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% set hide_nav = true %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="min-h-[70vh] flex items-center justify-center">
+    <div class="w-full max-w-4xl">
+        <div class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">Select Your Role</h1>
+            <p class="text-slate-600">Choose how you want to use Arogya Sampark.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a href="{{ url_for('admin_login') }}" class="role-card role-admin">
+                <div class="role-icon" aria-hidden="true">
+                    <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V6l8-4 8 4z" />
+                        <path d="M12 8v4" />
+                        <path d="M12 16h.01" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="role-title">ADMIN</div>
+                    <div class="role-subtitle">Manage emergencies, doctors, appointments, and analytics</div>
+                </div>
+            </a>
+            <a href="{{ url_for('patient_home') }}" class="role-card role-patient">
+                <div class="role-icon" aria-hidden="true">
+                    <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                        <path d="M12 12v2" />
+                        <path d="M11 13h2" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="role-title">PATIENT</div>
+                    <div class="role-subtitle">Book check-ups, use AI assistant, search blood donors</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="hero-surface p-6 md:p-10 rounded-2xl mb-8">
+        <div class="text-center">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Arogya Sampark</h1>
+            <p class="text-white/90">AI-powered government hospital scheduler to reduce waiting time</p>
+        </div>
+        <div class="flex justify-center mt-8">
+            <button type="button" id="emergency-btn" class="emergency-button">
+                <span class="text-4xl mr-2 text-white" aria-hidden="true">
+                    <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                        <path d="M12 9v4" />
+                        <path d="M12 17h.01" />
+                    </svg>
+                </span>
+                EMERGENCY
+            </button>
+        </div>
+    </div>
+
+    <!-- Platform Highlights Section -->
+    <section class="mb-12">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4">Platform Highlights</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto">Real-time statistics and achievements of our digital healthcare ecosystem</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="highlight-card">
+                <div class="highlight-icon text-blue-600" id="appointments-icon" aria-hidden="true">
+                    <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <path d="M16 2v4" />
+                        <path d="M8 2v4" />
+                        <path d="M3 10h18" />
+                    </svg>
+                </div>
+                <div class="highlight-content">
+                    <h4 class="highlight-title">Total Appointments</h4>
+                    <div class="highlight-number" id="appointments-count">0</div>
+                    <p class="highlight-desc">Monthly bookings</p>
+                </div>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon text-emerald-600" id="patients-icon" aria-hidden="true">
+                    <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </div>
+                <div class="highlight-content">
+                    <h4 class="highlight-title">Registered Patients</h4>
+                    <div class="highlight-number" id="patients-count">0</div>
+                    <p class="highlight-desc">Active users</p>
+                </div>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon text-red-600" id="donors-icon" aria-hidden="true">
+                    <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2s7 7.2 7 13a7 7 0 0 1-14 0c0-5.8 7-13 7-13z" />
+                    </svg>
+                </div>
+                <div class="highlight-content">
+                    <h4 class="highlight-title">Blood Donors</h4>
+                    <div class="highlight-number" id="donors-count">0</div>
+                    <p class="highlight-desc">Available donors</p>
+                </div>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon text-teal-700" id="hospitals-icon" aria-hidden="true">
+                    <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" />
+                        <path d="M9 20v-6h6v6" />
+                        <path d="M10 9h4" />
+                        <path d="M12 7v4" />
+                    </svg>
+                </div>
+                <div class="highlight-content">
+                    <h4 class="highlight-title">Connected Hospitals</h4>
+                    <div class="highlight-number" id="hospitals-count">0</div>
+                    <p class="highlight-desc">Partner hospitals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arogya Digital Health ID Section -->
+    <section class="mb-12">
+        <div class="health-id-section">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="health-id-content">
+                    <h2 class="health-id-title">Arogya Digital Health ID</h2>
+                    <p class="health-id-description">
+                        Your comprehensive digital health identity that integrates with government healthcare services. 
+                        Manage your medical records, appointments, and emergency contacts in one secure platform.
+                    </p>
+                    
+                    <div class="health-id-features">
+                        <div class="health-feature">
+                            <span class="health-feature-icon text-blue-600" aria-hidden="true">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <path d="M7 10l5 5 5-5" />
+                                    <path d="M12 15V3" />
+                                </svg>
+                            </span>
+                            <span>Store patient medical records</span>
+                        </div>
+                        <div class="health-feature">
+                            <span class="health-feature-icon text-emerald-600" aria-hidden="true">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                                </svg>
+                            </span>
+                            <span>Faster hospital check-in</span>
+                        </div>
+                        <div class="health-feature">
+                            <span class="health-feature-icon text-slate-700" aria-hidden="true">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                            </span>
+                            <span>Secure digital health data</span>
+                        </div>
+                        <div class="health-feature">
+                            <span class="health-feature-icon text-teal-700" aria-hidden="true">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 21h18" />
+                                    <path d="M4 21V10" />
+                                    <path d="M8 21V10" />
+                                    <path d="M12 21V10" />
+                                    <path d="M16 21V10" />
+                                    <path d="M20 21V10" />
+                                    <path d="M2 10h20" />
+                                    <path d="M12 3l10 7H2l10-7z" />
+                                </svg>
+                            </span>
+                            <span>Government integrated health services</span>
+                        </div>
+                    </div>
+                    
+                    <a href="{{ url_for('health_id_page') }}" class="health-id-btn">Create Health ID</a>
+                </div>
+                
+                <div class="health-id-illustration">
+                    <div class="health-id-graphic">
+                        <div class="health-id-card">
+                            <div class="health-id-header">
+                                <span class="health-id-logo text-teal-700" aria-hidden="true">
+                                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" />
+                                        <path d="M9 20v-6h6v6" />
+                                        <path d="M10 9h4" />
+                                        <path d="M12 7v4" />
+                                    </svg>
+                                </span>
+                                <span class="health-id-text">Arogya Health ID</span>
+                            </div>
+                            <div class="health-id-body">
+                                <div class="health-id-field">
+                                    <span class="health-id-label">Patient ID:</span>
+                                    <span class="health-id-value">ASH-2024-XXXX</span>
+                                </div>
+                                <div class="health-id-field">
+                                    <span class="health-id-label">Valid:</span>
+                                    <span class="health-id-value">2024-2029</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+        <a href="{{ url_for('book_page') }}" class="card p-6 hover:shadow-lg transition text-center">
+            <span class="text-3xl block mb-2 text-blue-600" aria-hidden="true">
+                <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <path d="M16 2v4" />
+                    <path d="M8 2v4" />
+                    <path d="M3 10h18" />
+                </svg>
+            </span>
+            <h3 class="font-semibold text-slate-900">Book Appointment</h3>
+            <p class="text-sm text-slate-600">Department → Doctor → Time slot</p>
+        </a>
+        <a href="{{ url_for('disease_prediction_page') }}" class="card p-6 hover:shadow-lg transition text-center">
+            <span class="text-3xl block mb-2 text-emerald-600" aria-hidden="true">
+                <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5V6" />
+                    <path d="M14.5 2A3.5 3.5 0 0 1 18 5.5V6" />
+                    <path d="M6 10a3 3 0 0 0 3 3h.5" />
+                    <path d="M18 10a3 3 0 0 1-3 3h-.5" />
+                    <path d="M8 21a4 4 0 0 1-4-4v-3a3 3 0 0 1 3-3" />
+                    <path d="M16 21a4 4 0 0 0 4-4v-3a3 3 0 0 0-3-3" />
+                    <path d="M9 9v.01" />
+                    <path d="M15 9v.01" />
+                </svg>
+            </span>
+            <h3 class="font-semibold text-slate-900">Disease Risk Prediction</h3>
+            <p class="text-sm text-slate-600">AI-powered symptom analysis</p>
+        </a>
+        <a href="{{ url_for('blood_donors_page') }}" class="card p-6 hover:shadow-lg transition text-center">
+            <span class="text-3xl block mb-2 text-red-600" aria-hidden="true">
+                <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2s7 7.2 7 13a7 7 0 0 1-14 0c0-5.8 7-13 7-13z" />
+                </svg>
+            </span>
+            <h3 class="font-semibold text-slate-900">Blood Donors</h3>
+            <p class="text-sm text-slate-600">Search by group & city</p>
+        </a>
+    </div>
+</div>
+
+<!-- Emergency modal -->
+<div id="emergency-modal" class="modal hidden">
+    <div class="modal-content max-w-md">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-red-700">Report Emergency</h3>
+            <button type="button" id="emergency-modal-close" class="text-slate-500 hover:text-slate-800">&times;</button>
+        </div>
+        <p class="text-slate-600 mb-4">Please provide details. Your location will be shared for faster help.</p>
+        <form id="emergency-form">
+            <label class="block text-sm font-medium text-slate-700 mb-1">Your name *</label>
+            <input type="text" id="emergency-name" required class="input w-full mb-3" placeholder="Full name">
+            <label class="block text-sm font-medium text-slate-700 mb-1">Emergency description *</label>
+            <textarea id="emergency-desc" required class="input w-full mb-3" rows="3" placeholder="Describe as emergency..."></textarea>
+            <p class="text-sm text-slate-500 mb-3">Location: <span id="emergency-loc-display">Fetching...</span></p>
+            <div class="flex gap-2">
+                <button type="submit" class="btn-danger flex-1">Send Emergency Alert</button>
+                <button type="button" id="emergency-cancel" class="btn-secondary">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Emergency confirmation popup (step 1) -->
+<div id="emergency-confirm" class="modal hidden">
+    <div class="modal-content max-w-sm text-center">
+        <p class="text-lg mb-4">Is this a life-threatening emergency?</p>
+        <div class="flex gap-3 justify-center">
+            <button type="button" id="emergency-yes" class="btn-danger">Yes, report</button>
+            <button type="button" id="emergency-no" class="btn-secondary">No</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/emergency.js') }}"></script>
+<script>
+// Platform Stats Animation
+(function() {
+    // Animated counter function
+    function animateCounter(element, target, duration = 2000) {
+        let current = 0;
+        const increment = target / duration;
+        const timer = setInterval(() => {
+            current += increment;
+            element.textContent = Math.floor(current);
+            if (current >= target) {
+                clearInterval(timer);
+                element.textContent = target;
+            }
+        }, 10);
+    }
+
+    // Fetch platform stats and animate counters
+    async function loadPlatformStats() {
+        try {
+            const response = await fetch('/api/platform-stats');
+            const data = await response.json();
+            
+            // Update counters with animation
+            animateCounter(document.getElementById('appointments-count'), data.appointments || 0);
+            animateCounter(document.getElementById('patients-count'), data.patients || 0);
+            animateCounter(document.getElementById('donors-count'), data.donors || 0);
+            animateCounter(document.getElementById('hospitals-count'), data.hospitals || 0);
+            
+        } catch (error) {
+            console.error('Error loading platform stats:', error);
+        }
+    }
+
+    // Initialize stats when page loads
+    document.addEventListener('DOMContentLoaded', loadPlatformStats);
+})();
+</script>
+{% endblock %}
+

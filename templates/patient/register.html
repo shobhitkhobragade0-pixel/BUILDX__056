@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Patient Register{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto card p-8">
+    <h1 class="text-2xl font-bold text-teal-800 mb-6">Patient Registration</h1>
+    <form method="post" action="{{ url_for('patient_register') }}">
+        <label class="block text-sm font-medium text-slate-700 mb-1">Full name *</label>
+        <input type="text" name="name" required class="input w-full mb-4" placeholder="Your name">
+        <label class="block text-sm font-medium text-slate-700 mb-1">Email *</label>
+        <input type="email" name="email" required class="input w-full mb-4" placeholder="your@email.com">
+        <label class="block text-sm font-medium text-slate-700 mb-1">Phone</label>
+        <input type="tel" name="phone" class="input w-full mb-4" placeholder="10-digit mobile">
+        <label class="block text-sm font-medium text-slate-700 mb-1">Password *</label>
+        <input type="password" name="password" required class="input w-full mb-4" placeholder="••••••••">
+        <button type="submit" class="btn-primary w-full">Register</button>
+    </form>
+    <div class="mt-6 pt-6 border-t border-slate-200">
+        <p class="text-center text-slate-600 text-sm mb-3">Already have an account?</p>
+        <a href="{{ url_for('patient_login') }}" class="btn-secondary w-full text-center block">Login</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Arogya Sampark{% endblock %} | Arogya Sampark</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en', includedLanguages: 'en,hi,mr,te,ta,bn,gu,kn,ml', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    {% block head %}{% endblock %}
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+    <nav class="navbar sticky top-0 z-40 backdrop-blur-lg border-b border-white/20 shadow-lg"
+         style="background: linear-gradient(90deg, #1e3a8a, #2563eb, #10b981);">
+        <div class="container mx-auto px-4">
+            <div class="h-16 flex items-center justify-between gap-4">
+                <a href="{{ url_for('patient_home') }}" 
+                   class="logo-nav flex items-center gap-2 whitespace-nowrap transition-all duration-300 hover:scale-105">
+                    <span class="text-2xl" aria-hidden="true">
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" />
+                            <path d="M9 20v-6h6v6" />
+                            <path d="M10 9h4" />
+                            <path d="M12 7v4" />
+                        </svg>
+                    </span>
+                    <span class="font-bold text-white text-lg">Arogya Sampark</span>
+                </a>
+
+                {% if not hide_nav %}
+                    <!-- Desktop Navigation -->
+                    <div class="hidden lg:flex items-center justify-between flex-1 min-w-0">
+                        <div class="flex items-center gap-6 min-w-0">
+                            <a href="{{ url_for('patient_home') }}" class="nav-link-modern">Home</a>
+                            <a href="{{ url_for('book_page') }}" class="nav-link-modern">Appointments</a>
+                            <a href="{{ url_for('blood_donors_page') }}" class="nav-link-modern">Donor Search</a>
+                            <a href="{{ url_for('disease_prediction_page') }}" class="nav-link-modern">Disease Prediction</a>
+                        </div>
+
+                        <!-- Language and Register/Login buttons -->
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <!-- Language selector -->
+                            <div class="relative" id="langDropdown">
+                                <button type="button" class="lang-btn-modern" id="langBtn">
+                                    <span class="lang-globe" aria-hidden="true">
+                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="M2 12h20" />
+                                            <path d="M12 2a15 15 0 0 1 0 20" />
+                                            <path d="M12 2a15 15 0 0 0 0 20" />
+                                        </svg>
+                                    </span>
+                                    <span>Language</span>
+                                    <span class="lang-caret">▾</span>
+                                </button>
+                                <div class="dropdown-panel-modern hidden absolute right-0 mt-3 w-64 backdrop-blur-xl bg-white/95 border border-white/20 rounded-xl shadow-2xl p-4" id="langMenu">
+                                    <div class="text-xs text-slate-500 mb-2">Translate this page</div>
+                                    <div id="google_translate_element"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- User menu based on login state -->
+                            {% if session.get('patient_id') %}
+                                <!-- Logged in user options -->
+                                <div class="flex items-center gap-2">
+                                    <span class="text-white/90 text-sm">Welcome, {{ session.get('patient_name', 'User') }}</span>
+                                    <a href="{{ url_for('patient_dashboard') }}" class="user-menu-btn">Dashboard</a>
+                                    <a href="{{ url_for('patient_logout') }}" class="user-menu-btn logout">Logout</a>
+                                </div>
+                            {% else %}
+                                <!-- Not logged in - show Register -->
+                                <a href="{{ url_for('patient_register') }}" 
+                                   class="register-btn-modern">
+                                    Register
+                                </a>
+                                <a href="{{ url_for('patient_login') }}" 
+                                   class="login-btn-modern">
+                                    Login
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if not hide_nav %}
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" type="button" 
+                            class="lg:hidden text-white hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                {% endif %}
+            </div>
+
+            {% if not hide_nav %}
+                <div id="mobileMenu" class="lg:hidden hidden">
+                    <div class="flex flex-col gap-3 pt-4">
+                        <!-- Language in mobile menu -->
+                        <div class="backdrop-blur-xl bg-white/95 border border-white/20 rounded-xl p-4 shadow-xl">
+                            <div class="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                                <span aria-hidden="true">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <path d="M2 12h20" />
+                                        <path d="M12 2a15 15 0 0 1 0 20" />
+                                        <path d="M12 2a15 15 0 0 0 0 20" />
+                                    </svg>
+                                </span>
+                                Language
+                            </div>
+                            <div id="google_translate_element_mobile"></div>
+                        </div>
+                        
+                        <!-- Mobile Navigation Links -->
+                        <div class="backdrop-blur-xl bg-white/95 border border-white/20 rounded-xl p-4 shadow-xl">
+                            <div class="flex flex-col gap-3">
+                                <a href="{{ url_for('patient_home') }}" class="mobile-nav-link">Home</a>
+                                <a href="{{ url_for('book_page') }}" class="mobile-nav-link">Appointments</a>
+                                <a href="{{ url_for('blood_donors_page') }}" class="mobile-nav-link">Donor Search</a>
+                                <a href="{{ url_for('disease_prediction_page') }}" class="mobile-nav-link">Disease Prediction</a>
+                                
+                                {% if not session.get('patient_id') %}
+                                    <div class="border-t border-slate-200 pt-3 mt-3">
+                                        <a href="{{ url_for('patient_register') }}" class="btn-primary w-full text-center">Register</a>
+                                        <a href="{{ url_for('patient_login') }}" class="mobile-nav-link text-center mt-2">Login</a>
+                                    </div>
+                                {% endif %}
+                                
+                                {% if session.get('patient_id') %}
+                                    <div class="border-t border-slate-200 pt-3 mt-3">
+                                        <a href="{{ url_for('patient_dashboard') }}" class="mobile-nav-link">Dashboard</a>
+                                        <a href="{{ url_for('my_appointments_page') }}" class="mobile-nav-link">My Appointments</a>
+                                        <a href="{{ url_for('health_id_page') }}" class="mobile-nav-link">Health ID</a>
+                                        <a href="{{ url_for('patient_logout') }}" class="mobile-nav-link text-red-600">Logout</a>
+                                    </div>
+                                {% endif %}
+                                
+                                {% if session.get('admin_logged_in') %}
+                                    <div class="border-t border-slate-200 pt-3 mt-3">
+                                        <a href="{{ url_for('admin_dashboard') }}" class="mobile-nav-link text-emerald-700 font-semibold">Admin</a>
+                                        <a href="{{ url_for('admin_logout') }}" class="mobile-nav-link text-red-600">Admin Logout</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mx-auto px-4 mt-2">
+                {% for category, msg in messages %}
+                    <div class="alert alert-{{ category or 'info' }} py-2 px-4 rounded">{{ msg }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <main class="container mx-auto px-4 py-6">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="bg-slate-200 py-4 mt-8 text-center text-slate-600 text-sm">
+        &copy; Arogya Sampark. Government health scheduling portal.
+    </footer>
+    {% block scripts %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    <script>
+      // Mobile menu toggle
+      (function() {
+        const btn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      })();
+
+      // Dropdown toggles (Language only) - prevent layout shift
+      (function() {
+        const langBtn = document.getElementById('langBtn');
+        const langMenu = document.getElementById('langMenu');
+
+        function toggle(menu) { if (menu) menu.classList.toggle('hidden'); }
+        function hide(menu) { if (menu) menu.classList.add('hidden'); }
+        function clickOutside(e) {
+          if (langMenu && !langMenu.contains(e.target) && langBtn && !langBtn.contains(e.target)) hide(langMenu);
+        }
+        if (langBtn && langMenu) langBtn.addEventListener('click', (e) => { e.stopPropagation(); toggle(langMenu); });
+        document.addEventListener('click', clickOutside);
+      })();
+
+      // Mirror translate widget into mobile container (same-page translation; no separate pages)
+      (function() {
+        const desktop = document.getElementById('google_translate_element');
+        const mobile = document.getElementById('google_translate_element_mobile');
+        if (!desktop || !mobile) return;
+        // google widget renders asynchronously; poll briefly then clone
+        let tries = 0;
+        const t = setInterval(() => {
+          tries++;
+          if (desktop.innerHTML && desktop.innerHTML.length > 0) {
+            mobile.innerHTML = desktop.innerHTML;
+            clearInterval(t);
+          }
+          if (tries > 20) clearInterval(t);
+        }, 250);
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold text-teal-800 mb-6">Welcome, {{ session.get('patient_name', 'Patient') }}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <a href="{{ url_for('book_page') }}" class="card p-6 hover:shadow-lg transition text-center">
+            <span class="text-3xl block mb-2" aria-hidden="true">
+                <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <path d="M16 2v4" />
+                    <path d="M8 2v4" />
+                    <path d="M3 10h18" />
+                </svg>
+            </span>
+            <h3 class="font-semibold text-teal-800">Book Appointment</h3>
+        </a>
+        <a href="{{ url_for('my_appointments_page') }}" class="card p-6 hover:shadow-lg transition text-center">
+            <span class="text-3xl block mb-2" aria-hidden="true">
+                <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 2h6a2 2 0 0 1 2 2v2H7V4a2 2 0 0 1 2-2z" />
+                    <path d="M7 6H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2" />
+                    <path d="M8 11h8" />
+                    <path d="M8 15h6" />
+                </svg>
+            </span>
+            <h3 class="font-semibold text-teal-800">My Appointments</h3>
+        </a>
+        <a href="{{ url_for('health_id_page') }}" class="card p-6 hover:shadow-lg transition text-center">
+            <span class="text-3xl block mb-2" aria-hidden="true">
+                <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 3v6a6 6 0 0 0 12 0V3" />
+                    <path d="M8 3v6" />
+                    <path d="M16 3v6" />
+                    <path d="M20 13a4 4 0 0 1-4 4h-2" />
+                    <path d="M10 17a4 4 0 0 0 8 0" />
+                    <circle cx="18" cy="17" r="2" />
+                </svg>
+            </span>
+            <h3 class="font-semibold text-teal-800">Health ID & Records</h3>
+        </a>
+    </div>
+    <div class="card p-6">
+        <h2 class="text-xl font-semibold text-teal-800 mb-4">Quick links</h2>
+        <ul class="space-y-2">
+            <li><a href="{{ url_for('disease_prediction_page') }}" class="text-teal-600 hover:underline">Disease Risk Prediction</a></li>
+            <li><a href="{{ url_for('blood_donors_page') }}" class="text-teal-600 hover:underline">Blood Donor Search</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
